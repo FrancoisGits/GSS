@@ -4,8 +4,14 @@
 
 [Ceci est un lien vers la page suivante](exempleMarkdown copy.html)
 
-## mot
-*mot*  
+## Sous titre 1 
+
+*Emphase 1*  
+
 **mot**
+
+* une puce
+* une autre puce
+* encore une autre puce
 
 ### TEST 3
