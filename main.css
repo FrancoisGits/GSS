@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 10px;
 }
 
 #image_profil {
@@ -35,4 +36,22 @@ body {
     max-width: 100%;
     max-height: 100vh;
     margin: auto;
+}
+
+#liste_article {
+    display: flex;
+    justify-content: center;
+}
+
+.article {
+    padding: 3px;
+}
+
+#container {
+    margin: 0 auto;
+    width: 80%;
+}
+
+h1 {
+    text-align: center;
 }

@@ -1,6 +1,7 @@
 import markdown2
 import os
 import sys
+import shutil
 
 repo_sources_MD = sys.argv[1]
 repo_sources_HTML = sys.argv[2]
@@ -12,12 +13,27 @@ footer_html = open("./footer_HTML")
 footer_html_lines = footer_html.readlines()
 footer_html.close()
 
+if os.path.exists(repo_sources_HTML):
+    shutil.rmtree(repo_sources_HTML)
+
 if not os.path.exists(repo_sources_HTML):
     os.makedirs(repo_sources_HTML)
 
 list_file_name_md = os.listdir(repo_sources_MD)
 
+with open("./index.html", "r") as old_index_content:
+    buf = old_index_content.readlines()
+
+
+with open("./index.html", "w") as new_index_content:
+    for line in buf:
+        if line.find('class="article"') != -1:
+            line = ""
+        new_index_content.write(line)
+
+
 for file_name in list_file_name_md:
+
 
     file_md = open(repo_sources_MD + "/" + file_name, "r")
     html_content = markdown2.markdown(file_md.read())
@@ -35,6 +51,40 @@ for file_name in list_file_name_md:
     for line2 in footer_html_lines:
         file_html.write(line2)
     file_html.close()
+
+    with open("./index.html", "r") as old_index_content:
+        buf = old_index_content.readlines()
+
+    with open("./index.html", "w") as new_index_content:
+        for line in buf:
+            if line.find('id="liste_article">') != -1:
+                line = line + '<div class="article"><a href="./sources_HTML/' + file_name + '.html">' + file_name + '</div>\n'
+            new_index_content.write(line)
+
+
+
+
+    # for line in fileinput.FileInput("./index.html",inplace=1):
+    #     if 'id="liste_article"' in line:
+    #         line = line.replace(line, line + '<div class ="article"><a href="./sources_HTML/' + file_name + '"></div>')
+    #         print (line)
+
+
+
+    # index_file = open("./index.html" ,"r")
+    # index_file_lines = index_file.readlines()
+    # for line3 in index_file_lines
+    #     id line3.find('id="liste_article">') != -1:
+
+
+    # index_file = open("./index.html", "w")
+    # for line3 in index_file_lines:
+    #     if line3.find('id="liste_article">') != -1:
+    #         index = index_file_lines.index(line3)
+    #         new_line = '<div class ="article"><a href="./sources_HTML' + file_name + '></div>'
+    #         index_file.insert()
+    # index_file.close()
+
 
 
 
