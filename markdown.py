@@ -2,39 +2,39 @@ import markdown2
 import os
 import sys
 
-dossier_sources_MD = sys.argv[1]
-dossier_sources_HTML = sys.argv[2]
+repo_sources_MD = sys.argv[1]
+repo_sources_HTML = sys.argv[2]
 
-file_header = open("./header_HTML")
-header_HTML = file_header.readlines()
-file_header.close()
-file_footer = open("./footer_HTML")
-footer_HTML = file_footer.readlines()
-file_footer.close()
+header_html = open("./header_HTML")
+header_html_lines = header_html.readlines()
+header_html.close()
+footer_html = open("./footer_HTML")
+footer_html_lines = footer_html.readlines()
+footer_html.close()
 
-if not os.path.exists(dossier_sources_HTML):
-    os.makedirs(dossier_sources_HTML)
+if not os.path.exists(repo_sources_HTML):
+    os.makedirs(repo_sources_HTML)
 
-liste_nom_fichiers_MD = os.listdir(dossier_sources_MD)
+list_file_name_md = os.listdir(repo_sources_MD)
 
-for i in liste_nom_fichiers_MD:
+for file_name in list_file_name_md:
 
-    f = open(dossier_sources_MD + "/" + i, "r")
-    page_rendered = markdown2.markdown(f.read())
-    i = os.path.splitext(i)[0]
+    file_md = open(repo_sources_MD + "/" + file_name, "r")
+    html_content = markdown2.markdown(file_md.read())
+    file_name = os.path.splitext(file_name)[0]
 
-    page_rendered_file = open(dossier_sources_HTML + "/" + i + ".html" ,"w")
-    for y in header_HTML:
-        if y.find('<title>') != -1:
-            y = "<title>" + i + "</title>"
-        page_rendered_file.write(y)
-    page_rendered_file.close()
+    file_html = open(repo_sources_HTML + "/" + file_name + ".html" ,"w")
+    for line1 in header_html_lines:
+        if line1.find('<title>') != -1:
+            line1 = "<title>" + file_name + "</title>"
+        file_html.write(line1)
+    file_html.close()
 
-    page_rendered_file = open(dossier_sources_HTML + "/" + i + ".html" ,"a")
-    page_rendered_file.write(page_rendered)
-    for z in footer_HTML:
-        page_rendered_file.write(z)
-    page_rendered_file.close()
+    file_html = open(repo_sources_HTML + "/" + file_name + ".html" ,"a")
+    file_html.write(html_content)
+    for line2 in footer_html_lines:
+        file_html.write(line2)
+    file_html.close()
 
 
 
