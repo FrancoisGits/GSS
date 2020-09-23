@@ -59,33 +59,5 @@ for file_name in list_file_name_md:
         for line in buf:
             if line.find('id="liste_article">') != -1:
                 line = line + '<div class="article"><a href="./sources_HTML/' + file_name + '.html">' + file_name + '</div>\n'
-            new_index_content.write(line)
-
-
-
-
-    # for line in fileinput.FileInput("./index.html",inplace=1):
-    #     if 'id="liste_article"' in line:
-    #         line = line.replace(line, line + '<div class ="article"><a href="./sources_HTML/' + file_name + '"></div>')
-    #         print (line)
-
-
-
-    # index_file = open("./index.html" ,"r")
-    # index_file_lines = index_file.readlines()
-    # for line3 in index_file_lines
-    #     id line3.find('id="liste_article">') != -1:
-
-
-    # index_file = open("./index.html", "w")
-    # for line3 in index_file_lines:
-    #     if line3.find('id="liste_article">') != -1:
-    #         index = index_file_lines.index(line3)
-    #         new_line = '<div class ="article"><a href="./sources_HTML' + file_name + '></div>'
-    #         index_file.insert()
-    # index_file.close()
-
-
-
-
-
+            new_index_content.write(line)       
+            
