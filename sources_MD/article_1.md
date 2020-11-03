@@ -18,7 +18,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
 
 ## Lorem Ipsum logo
-![LIlogo]https://png.pngtree.com/element_our/png/20180911/background-material-design-for-lorem-ipsum-logo-png_89713.jpg
+![LIlogo](https://png.pngtree.com/element_our/png/20180911/background-material-design-for-lorem-ipsum-logo-png_89713.jpg)
 
 ## Here's some example of .md tips
 
