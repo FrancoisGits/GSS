@@ -13,6 +13,8 @@ footer_html = open("./footer_HTML")
 footer_html_lines = footer_html.readlines()
 footer_html.close()
 
+
+
 if os.path.exists(repo_sources_HTML):
     shutil.rmtree(repo_sources_HTML)
 
@@ -36,7 +38,7 @@ for file_name in list_file_name_md:
 
 
     file_md = open(repo_sources_MD + "/" + file_name, "r")
-    html_content = markdown2.markdown(file_md.read())
+    html_content = markdown2.markdown(file_md.read(), extras=["code-friendly", "fenced-code-blocks"])
     file_name = os.path.splitext(file_name)[0]
 
     file_html = open(repo_sources_HTML + "/" + file_name + ".html" ,"w")
@@ -60,4 +62,3 @@ for file_name in list_file_name_md:
             if line.find('id="liste_article">') != -1:
                 line = line + '<div class="article"><a href="./sources_HTML/' + file_name + '.html">' + file_name + '</div>\n'
             new_index_content.write(line)       
-            
